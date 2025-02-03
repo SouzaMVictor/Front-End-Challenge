@@ -45,7 +45,7 @@ function InputProcura() {
       />
       <img
         src={Lupa}
-        alt="Procurar"
+        alt="Imagem de uma lupa para procurar conteúdo"
         className="absolute top-1/2 right-2 h-5 w-5 -translate-y-1/2 transform text-gray-600"
       />
     </div>
