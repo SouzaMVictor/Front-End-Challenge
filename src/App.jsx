@@ -3,6 +3,7 @@ import "./App.css";
 import { Hero } from "./Hero.1";
 import { MaisVendidos } from "./MaisVendidos";
 import { Newsletter } from "./Newsletter";
+import { Footer } from "./Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <MaisVendidos />
       <Newsletter />
+      <Footer />
     </>
   );
 }
