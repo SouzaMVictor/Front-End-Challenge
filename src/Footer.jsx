@@ -1,5 +1,6 @@
 import Mail from "./assets/Icon (1).svg";
 import Phone from "./assets/Icon (2).svg";
+import { Botao } from "./Botao";
 import LogoBranco from "./assets/Vector (1).png";
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
         <p>brasil@corebiz.ag</p>
         <p>+55 11 3090 1039</p>
       </div>
-      <div className="mt-12 flex flex-col items-center justify-center gap-6 text-[12px] font-bold">
+      {/* <div className="mt-12 flex flex-col items-center justify-center gap-6 text-[12px] font-bold">
         <button className="flex items-center justify-center gap-2 rounded-sm border border-gray-300 bg-white px-6 py-3 text-black shadow-md transition">
           <img
             className="justify-center"
@@ -34,7 +35,26 @@ export function Footer() {
             fale com nosso <br /> consultor online{" "}
           </span>
         </button>
+      </div> */}
+      <div className="mt-12 flex flex-col items-center gap-6 text-[12px] font-bold">
+        <Botao className="flex flex-row items-center gap-2 rounded-sm border border-gray-300 bg-white px-6 py-3 text-black shadow-md transition">
+          <img
+            className="justify-center"
+            src={Mail}
+            alt="ícone de headphone para representar contato com o consultor online"
+          />
+          Entre em contato
+        </Botao>
+        <Botao className="flex items-center gap-2 rounded-sm border border-gray-300 bg-white px-6 py-1 text-black shadow-md transition">
+          <img
+            className="justify-center"
+            src={Phone}
+            alt="ícone de headphone para representar contato com o consultor online"
+          />
+          fale com nosso <br /> consultor online
+        </Botao>
       </div>
+
       <div className="flex flex-col items-center justify-center py-6">
         <span className="text-[10px] text-white">created by</span>
         <img src={LogoBranco} alt="corebiz" />

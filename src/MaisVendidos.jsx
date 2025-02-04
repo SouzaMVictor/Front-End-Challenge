@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Loader } from "./Loader";
 import { ErrorMessage } from "./ErrorMessage";
+import { Botao } from "./Botao";
 
 export function MaisVendidos() {
   const [products, setProducts] = useState([]);
@@ -98,17 +99,13 @@ function ProductItems({ products }) {
       ) : (
         <p>&nbsp;</p>
       )}
-      <BotaoComprar />
+      <Botao className="cursor-pointer rounded-lg bg-black px-8 py-3 text-[15px] font-bold text-white uppercase duration-300 hover:bg-neutral-800">
+        comprar
+      </Botao>
     </li>
   );
 }
-function BotaoComprar() {
-  return (
-    <button className="rounded-lg bg-black px-8 py-3 text-[15px] font-bold text-white uppercase duration-300 hover:bg-neutral-800">
-      comprar
-    </button>
-  );
-}
+
 //prop types
 MaisVendidos.propTypes = {
   products: PropTypes.arrayOf(

@@ -1,3 +1,4 @@
+import { Botao } from "./Botao";
 export function Newsletter() {
   return (
     <section className="mt-4 bg-[#F2F2F2]">
@@ -19,6 +20,9 @@ export function Newsletter() {
           placeholder="Digite seu email"
           className="mt-4 w-full rounded-lg bg-white p-3 font-bold focus:ring-1 focus:ring-[#BDBDBD] focus:outline-none"
         />
+        <Botao className="container mt-2 rounded-lg bg-black px-8 py-3 text-[15px] font-bold text-white uppercase duration-300 hover:bg-neutral-800">
+          Eu quero!
+        </Botao>
       </div>
     </section>
   );
