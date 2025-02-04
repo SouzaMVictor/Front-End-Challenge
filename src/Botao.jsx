@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export function Botao({ children, img, onClick, className = " " }) {
   return (
     <button
@@ -9,3 +11,10 @@ export function Botao({ children, img, onClick, className = " " }) {
     </button>
   );
 }
+
+Botao.propTypes = {
+  children: PropTypes.node,
+  img: PropTypes.string,
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+};
