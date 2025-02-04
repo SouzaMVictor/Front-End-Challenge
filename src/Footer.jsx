@@ -37,7 +37,7 @@ export function Footer() {
       </div>
       <div className="flex flex-col items-center justify-center py-6">
         <span className="text-[10px] text-white">created by</span>
-        <img src={LogoBranco} alt="" />
+        <img src={LogoBranco} alt="corebiz" />
       </div>
     </footer>
   );

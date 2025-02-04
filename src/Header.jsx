@@ -17,15 +17,18 @@ export function Header() {
   );
 }
 function MenuMobile() {
-  return <img src={MobileMenu} alt="menu mobile" />;
+  return <img src={MobileMenu} loading="eager" alt="menu mobile" />;
 }
 function CoreBizLogo() {
-  return <img src={LogoCoreBiz} alt="logo da empresa CoreBiz" />;
+  return (
+    <img src={LogoCoreBiz} loading="eager" alt="logo da empresa CoreBiz" />
+  );
 }
 function Cart() {
   return (
     <img
       src={ShoppingCart}
+      loading="eager"
       alt="carrinho de compras"
       className="h-[18px] w-[18px]"
     />

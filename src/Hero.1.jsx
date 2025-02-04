@@ -4,6 +4,7 @@ export function Hero() {
     <section className="relative">
       <img
         src={Banner1}
+        loading="eager"
         alt="banner contendo mão com cartão de crédito na frente de um notebook"
         className="h-full w-full object-cover"
       />

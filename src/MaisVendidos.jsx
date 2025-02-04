@@ -1,15 +1,47 @@
 import PropTypes from "prop-types";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Loader } from "./Loader";
+import { ErrorMessage } from "./ErrorMessage";
 
 export function MaisVendidos() {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://corebiz-test-server.onrender.com/api/v1/products")
-      .then((response) => response.json())
-      .then((data) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(function () {
+    async function fetchProducts() {
+      setIsLoading(true);
+      setError("");
+
+      try {
+        const response = await fetch(
+          "https://corebiz-test-server.onrender.com/api/v1/products",
+        );
+        const data = await response.json();
+        if (!response.ok)
+          //se não estiver ok, lançar mensagem de error
+          throw new Error("Algo deu errado");
+
+        const imagePromises = data.map((product) => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = product.imageUrl;
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        });
+
+        await Promise.all(imagePromises);
         setProducts(data);
-      });
+      } catch (error) {
+        setError(error.message);
+        console.error("Erro ao buscar os produtos:", error);
+      } finally {
+        setIsLoading(false);
+        setError("");
+      }
+    }
+    fetchProducts();
   }, []);
   return (
     <section className="mt-4">
@@ -17,11 +49,15 @@ export function MaisVendidos() {
         <h2 className="ml-[28px] font-black">Mais Vendidos</h2>
         <div className="ml-[28px] h-1 w-10 bg-[#C0C0C0C0]"></div>
       </div>
-      <ul className="mx-3 grid grid-cols-2 gap-4">
-        {products.map((products) => (
-          <ProductItems products={products} key={products.productId} />
-        ))}
-      </ul>
+      {isLoading && <Loader />}
+      {!isLoading && !error && (
+        <ul className="mx-3 grid grid-cols-2 gap-4">
+          {products.map((products) => (
+            <ProductItems products={products} key={products.productId} />
+          ))}
+        </ul>
+      )}
+      {error && <ErrorMessage message={error} />}
     </section>
   );
 }
