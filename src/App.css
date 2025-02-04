@@ -4,3 +4,6 @@
 body {
   font-family: "Nunito", sans-serif;
 }
+.text-cinza {
+  @apply text-[#7A7A7A];
+}

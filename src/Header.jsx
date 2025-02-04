@@ -8,7 +8,6 @@ export function Header() {
     // global container
     <header>
       <div className="flex justify-around pt-4">
-        {/* items container */}
         <MenuMobile />
         <CoreBizLogo />
         <Cart />
