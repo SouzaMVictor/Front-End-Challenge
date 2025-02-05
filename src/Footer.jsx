@@ -2,14 +2,15 @@ import Mail from "./assets/Icon (1).svg";
 import Phone from "./assets/Icon (2).svg";
 import { Botao } from "./Botao";
 import LogoBranco from "./assets/Vector (1).png";
+import { Traço } from "./Traço";
 export function Footer() {
   return (
     <footer className="mt-4 bg-black">
-      <h2 className="ml-[16px] pt-4 text-[18px] font-bold text-white">
+      <h2 className="ml-[28px] pt-4 text-[18px] font-bold text-white">
         Localização
       </h2>
-      <div className="ml-[16px] h-1 w-10 bg-[#FFF]"></div>
-      <div className="ml-[16px] pt-2 text-[13px] text-white">
+      <Traço className="bg-white" />
+      <div className="ml-[28px] pt-2 text-[13px] text-white">
         <p>Avenida Andrômeda, 2000. Bloco 6 e 8</p>
         <p>Alphavile SP </p>
         <p>brasil@corebiz.ag</p>

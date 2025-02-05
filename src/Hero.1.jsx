@@ -1,20 +1,31 @@
-import Banner1 from "./assets/image 2.png";
+import Banner1 from "./assets/mob0.png";
+import Banner2 from "./assets/mob1.png";
+import Banner3 from "./assets/mob2.png";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+const images = [Banner1, Banner2, Banner3];
 export function Hero() {
   return (
-    <section className="relative">
-      <img
-        src={Banner1}
-        loading="eager"
-        alt="banner contendo mão com cartão de crédito na frente de um notebook"
-        className="h-full w-full object-cover"
-      />
-      <div className="bg-opacity-50 absolute inset-0 bg-[#00000070]"></div>
-      <div className="absolute inset-0 flex flex-col items-start justify-center p-6 text-white">
-        <h2 className="text-xl font-semibold">
-          Olá, o que você está buscando?
-        </h2>
-        <h1 className="text-3xl font-black">Criar ou migrar seu e-commerce?</h1>
-      </div>
-    </section>
+    <Swiper
+      slidesPerView={1}
+      spaceBetween={10}
+      navigation={false}
+      pagination={{ clickable: true }}
+      modules={[Navigation, Pagination]}
+      className="h-auto w-full"
+    >
+      {images.map((image, index) => (
+        <SwiperSlide key={index} className="flex justify-center">
+          <img
+            src={image}
+            alt={`Banner ${index + 1}`}
+            className="h-auto w-full object-cover"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

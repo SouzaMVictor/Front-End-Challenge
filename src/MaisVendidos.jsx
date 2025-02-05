@@ -9,12 +9,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import StarRating from "./StarRating";
+import { Traço } from "./Traço";
 
 export function MaisVendidos() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-
   useEffect(function () {
     async function fetchProducts() {
       setIsLoading(true);
@@ -54,19 +54,19 @@ export function MaisVendidos() {
     <section className="mt-4">
       <div>
         <h2 className="ml-[28px] font-black">Mais Vendidos</h2>
-        <div className="ml-[28px] h-1 w-10 bg-[#C0C0C0C0]"></div>
+        <Traço className="bg-[#C0C0C0C0]" />
       </div>
       {isLoading && <Loader />}
       {!isLoading && !error && (
         <Swiper
-          slidesPerView={2} // Mostra 2 produtos por vez
-          spaceBetween={20} // Espaço entre os produtos
+          slidesPerView={2}
+          spaceBetween={20}
           pagination={{
             clickable: true,
             bulletClass: "swiper-pagination-bullet",
             bulletActiveClass: "swiper-pagination-bullet-active",
-          }} // Paginação ativada
-          navigation={false} // Botões de navegação ativados
+          }}
+          navigation={false}
           modules={[Pagination, Navigation]}
           className="mt-4"
         >
