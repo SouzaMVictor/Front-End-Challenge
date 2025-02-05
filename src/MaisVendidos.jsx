@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
+import StarRating from "./StarRating";
 
 export function MaisVendidos() {
   const [products, setProducts] = useState([]);
@@ -87,7 +88,7 @@ function ProductItems({ products }) {
     products.installments && products.installments.length > 0;
   const installmentInfo = hasInstallments ? products.installments[0] : null;
   return (
-    <li className="group bg-white text-center duration-300 hover:bg-gray-300">
+    <li className="min-h-[350px] bg-white text-center duration-300">
       <img
         src={products.imageUrl}
         alt={products.productName}
@@ -95,7 +96,18 @@ function ProductItems({ products }) {
         className="mx-auto"
       />
       <p className="text-cinza text-[10px]">{products.productName}</p>
-      {products.stars ? <span>{products.stars}</span> : <span>&nbsp;</span>}
+      {products.stars ? (
+        // <span>{products.stars}</span>
+        <StarRating
+          maxRating={5}
+          size={10}
+          products={products}
+          defaultRating={products.stars || 0}
+          className="mx-auto"
+        />
+      ) : (
+        <span>&nbsp;</span>
+      )}
       {products.listPrice ? (
         <p className="text-cinza text-[11px] line-through">
           de R${(products.listPrice / 100).toFixed(2).replace(".", ",")}
