@@ -1,4 +1,5 @@
-import MobileMenu from "./assets/Icon.svg";
+import PropTypes from "prop-types";
+import MobileMenuIcon from "./assets/Icon.svg";
 import LogoCoreBiz from "./assets/site-logo-corebiz-preto-cinza.png";
 import ShoppingCart from "./assets/shopping-cart 1.png";
 import Lupa from "./assets/Vector.png";
@@ -17,7 +18,7 @@ export function Header({ cartCount }) {
   );
 }
 function MenuMobile() {
-  return <img src={MobileMenu} loading="eager" alt="menu mobile" />;
+  return <img src={MobileMenuIcon} loading="eager" alt="menu mobile" />;
 }
 function CoreBizLogo() {
   return (
@@ -26,7 +27,7 @@ function CoreBizLogo() {
 }
 function Cart({ cartCount }) {
   return (
-    <>
+    <div className="flex flex-row">
       <img
         src={ShoppingCart}
         loading="eager"
@@ -36,7 +37,7 @@ function Cart({ cartCount }) {
       <div className="flex h-5 w-5 items-center justify-center rounded-2xl border bg-[#f8475f] align-middle text-[10px] text-white">
         {cartCount}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -58,3 +59,11 @@ function InputProcura() {
     </div>
   );
 }
+
+Header.propTypes = {
+  cartCount: PropTypes.number.isRequired,
+};
+
+Cart.propTypes = {
+  cartCount: PropTypes.number.isRequired,
+};

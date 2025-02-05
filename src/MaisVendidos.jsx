@@ -69,6 +69,12 @@ export function MaisVendidos({ onAddToCart }) {
           navigation={false}
           modules={[Pagination, Navigation]}
           className="mt-4"
+          breakpoints={{
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
         >
           <ul className="mx-3 grid grid-cols-2 gap-4">
             {products.map((products) => (
@@ -97,7 +103,6 @@ function ProductItems({ products, onAddToCart }) {
       />
       <p className="text-cinza text-[10px]">{products.productName}</p>
       {products.stars ? (
-        // <span>{products.stars}</span>
         <StarRating
           maxRating={5}
           size={10}
@@ -143,22 +148,7 @@ function ProductItems({ products, onAddToCart }) {
 
 //prop types
 MaisVendidos.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      productId: PropTypes.number.isRequired,
-      productName: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      stars: PropTypes.number,
-      listPrice: PropTypes.number,
-      price: PropTypes.number.isRequired,
-      installments: PropTypes.arrayOf(
-        PropTypes.shape({
-          quantity: PropTypes.number.isRequired,
-          value: PropTypes.number.isRequired,
-        }),
-      ).isRequired,
-    }),
-  ),
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 ProductItems.propTypes = {
@@ -176,4 +166,5 @@ ProductItems.propTypes = {
       }),
     ).isRequired,
   }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
