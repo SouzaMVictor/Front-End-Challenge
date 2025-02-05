@@ -12,7 +12,7 @@ import { Pagination, Navigation } from "swiper/modules";
 import { useMediaQuery } from "react-responsive";
 
 export function Hero() {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
   const images = isMobile
     ? [Banner1, Banner2, Banner3]
     : [BannerDesk1, BannerDesk2, BannerDesk3];
