@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { Loader } from "./Loader";
 import { ErrorMessage } from "./ErrorMessage";
 import { Botao } from "./Botao";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 
 export function MaisVendidos() {
   const [products, setProducts] = useState([]);
@@ -52,11 +57,26 @@ export function MaisVendidos() {
       </div>
       {isLoading && <Loader />}
       {!isLoading && !error && (
-        <ul className="mx-3 grid grid-cols-2 gap-4">
-          {products.map((products) => (
-            <ProductItems products={products} key={products.productId} />
-          ))}
-        </ul>
+        <Swiper
+          slidesPerView={2} // Mostra 2 produtos por vez
+          spaceBetween={20} // Espaço entre os produtos
+          pagination={{
+            clickable: true,
+            bulletClass: "swiper-pagination-bullet",
+            bulletActiveClass: "swiper-pagination-bullet-active",
+          }} // Paginação ativada
+          navigation={false} // Botões de navegação ativados
+          modules={[Pagination, Navigation]}
+          className="mt-4"
+        >
+          <ul className="mx-3 grid grid-cols-2 gap-4">
+            {products.map((products) => (
+              <SwiperSlide key={products.productId}>
+                <ProductItems products={products} />
+              </SwiperSlide>
+            ))}
+          </ul>
+        </Swiper>
       )}
       {error && <ErrorMessage message={error} />}
     </section>
