@@ -11,7 +11,7 @@ import { Pagination, Navigation } from "swiper/modules";
 import StarRating from "./StarRating";
 import { Traço } from "./Traço";
 
-export function MaisVendidos() {
+export function MaisVendidos({ onAddToCart }) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -73,7 +73,7 @@ export function MaisVendidos() {
           <ul className="mx-3 grid grid-cols-2 gap-4">
             {products.map((products) => (
               <SwiperSlide key={products.productId}>
-                <ProductItems products={products} />
+                <ProductItems products={products} onAddToCart={onAddToCart} />
               </SwiperSlide>
             ))}
           </ul>
@@ -83,7 +83,7 @@ export function MaisVendidos() {
     </section>
   );
 }
-function ProductItems({ products }) {
+function ProductItems({ products, onAddToCart }) {
   const hasInstallments =
     products.installments && products.installments.length > 0;
   const installmentInfo = hasInstallments ? products.installments[0] : null;
@@ -131,7 +131,10 @@ function ProductItems({ products }) {
       ) : (
         <p>&nbsp;</p>
       )}
-      <Botao className="cursor-pointer rounded-lg bg-black px-8 py-3 text-[15px] font-bold text-white uppercase duration-300 hover:bg-neutral-800">
+      <Botao
+        onClick={onAddToCart}
+        className="cursor-pointer rounded-lg bg-black px-8 py-3 text-[15px] font-bold text-white uppercase duration-300 hover:bg-neutral-800"
+      >
         comprar
       </Botao>
     </li>

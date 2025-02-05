@@ -3,14 +3,14 @@ import LogoCoreBiz from "./assets/site-logo-corebiz-preto-cinza.png";
 import ShoppingCart from "./assets/shopping-cart 1.png";
 import Lupa from "./assets/Vector.png";
 import { useState } from "react";
-export function Header() {
+export function Header({ cartCount }) {
   return (
     // global container
     <header>
       <div className="flex justify-around pt-4">
         <MenuMobile />
         <CoreBizLogo />
-        <Cart />
+        <Cart cartCount={cartCount} />
       </div>
       <InputProcura />
     </header>
@@ -24,14 +24,19 @@ function CoreBizLogo() {
     <img src={LogoCoreBiz} loading="eager" alt="logo da empresa CoreBiz" />
   );
 }
-function Cart() {
+function Cart({ cartCount }) {
   return (
-    <img
-      src={ShoppingCart}
-      loading="eager"
-      alt="carrinho de compras"
-      className="h-[18px] w-[18px]"
-    />
+    <>
+      <img
+        src={ShoppingCart}
+        loading="eager"
+        alt="carrinho de compras"
+        className="h-[18px] w-[18px]"
+      />
+      <div className="flex h-5 w-5 items-center justify-center rounded-2xl border bg-[#f8475f] align-middle text-[10px] text-white">
+        {cartCount}
+      </div>
+    </>
   );
 }
 
