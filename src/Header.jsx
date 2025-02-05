@@ -3,6 +3,7 @@ import MobileMenuIcon from "./assets/Icon.svg";
 import LogoCoreBiz from "./assets/site-logo-corebiz-preto-cinza.png";
 import ShoppingCart from "./assets/shopping-cart 1.png";
 import Lupa from "./assets/Vector.png";
+import MinhaConta from "./assets/Minha Conta.png";
 import { useState } from "react";
 export function Header({ cartCount }) {
   return (
@@ -15,17 +16,55 @@ export function Header({ cartCount }) {
       </div>
 
       <InputProcura />
+      <MinhaContaMenu />
     </header>
   );
 }
-function MenuMobile() {
+function MinhaContaMenu() {
   return (
     <img
-      src={MobileMenuIcon}
-      loading="eager"
-      alt="menu mobile"
-      className="md:hidden"
+      src={MinhaConta}
+      alt=""
+      className="hidden md:block md:h-5 md:translate-y-4"
     />
+  );
+}
+function MenuMobile() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <div>
+      <img
+        src={MobileMenuIcon}
+        loading="eager"
+        alt="menu mobile"
+        className="md:hidden"
+        onClick={toggleMenu}
+      />
+      {isOpen && (
+        <nav className="absolute top-0 left-0 w-48 bg-white p-4 shadow-md">
+          <button
+            onClick={closeMenu}
+            className="absolute top-2 right-2 text-2xl font-bold"
+          >
+            &times;
+          </button>
+          <ul>
+            <li className="flex items-center">
+              <a href="#minha-conta">
+                <img src={MinhaConta} className="ml-2" alt="Minha conta" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </div>
   );
 }
 function CoreBizLogo() {
