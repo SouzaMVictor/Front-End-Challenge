@@ -51,9 +51,9 @@ export function MaisVendidos({ onAddToCart }) {
     fetchProducts();
   }, []);
   return (
-    <section className="mt-4">
+    <section className="mt-4 lg:mx-50">
       <div>
-        <h2 className="ml-[28px] font-black">Mais Vendidos</h2>
+        <h2 className="ml-[28px] font-black lg:ml-0">Mais Vendidos</h2>
         <Traço className="bg-[#C0C0C0C0]" />
       </div>
       {isLoading && <Loader />}

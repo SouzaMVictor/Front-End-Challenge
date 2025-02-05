@@ -7,27 +7,40 @@ import { useState } from "react";
 export function Header({ cartCount }) {
   return (
     // global container
-    <header>
-      <div className="flex justify-around pt-4">
+    <header className="px-6 py-4 md:flex lg:ml-10 lg:justify-around">
+      <div className="flex items-end justify-between gap-4">
         <MenuMobile />
         <CoreBizLogo />
         <Cart cartCount={cartCount} />
       </div>
+
       <InputProcura />
     </header>
   );
 }
 function MenuMobile() {
-  return <img src={MobileMenuIcon} loading="eager" alt="menu mobile" />;
+  return (
+    <img
+      src={MobileMenuIcon}
+      loading="eager"
+      alt="menu mobile"
+      className="md:hidden"
+    />
+  );
 }
 function CoreBizLogo() {
   return (
-    <img src={LogoCoreBiz} loading="eager" alt="logo da empresa CoreBiz" />
+    <img
+      src={LogoCoreBiz}
+      loading="eager"
+      alt="logo da empresa CoreBiz"
+      className="flex h-auto max-w-[120px] flex-1 justify-center"
+    />
   );
 }
 function Cart({ cartCount }) {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row items-center">
       <img
         src={ShoppingCart}
         loading="eager"
@@ -44,7 +57,7 @@ function Cart({ cartCount }) {
 function InputProcura() {
   const [query, setQuery] = useState("");
   return (
-    <div className="relative mx-[20px] my-2">
+    <div className="relative mt-3 max-w-[728px] flex-1">
       <input
         type="text"
         placeholder="O que está procurando?"
